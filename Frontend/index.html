@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra Classes - Maths & Physics</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Extra Classes</h1>
+            <p>Excellence in Mathematics & Physics</p>
+        </div>
+    </header>
+
+    <nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        <ul id="nav-menu">
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('apply')">Apply Now</a></li>
+            <li><a href="#" onclick="showSection('classroom')">Classroom</a></li>
+            <li><a href="#" onclick="showSection('teachers')">Teachers</a></li>
+            <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="home" class="page active">
+            <h2>Welcome to Our Extra Classes</h2>
+            <p class="intro-text">
+                We offer specialized tutoring in Mathematics and Physics to help learners excel in their studies. 
+                Our experienced teachers provide personalized attention and effective learning strategies to ensure 
+                every student reaches their full potential.
+            </p>
+            
+            <div class="location-info">
+                <h3>📍 Location</h3>
+                <p><strong>Address:</strong> 48 Hout Street, Jeppestown 2094, Johannesburg</p>
+                <p>We are conveniently located in the heart of Johannesburg, making it easy for students to access quality education.</p>
+            </div>
+        </section>
+
+        <section id="apply" class="page">
+            <h2>Apply for Extra Classes</h2>
+            
+            <div class="teacher-intro">
+                <h3>Your Teacher: Mr. Nkosi</h3>
+                <p class="teacher-description">
+                    Specialized in making complex mathematical and physics concepts easy to understand. 
+                    Experienced in teaching Grades 8-12 with a focus on problem-solving techniques 
+                    and exam preparation.
+                </p>
+                <div class="teacher-contact">
+                    <p><strong>📧 Email:</strong> philasandenkosi8@gmail.com</p>
+                    <p><strong>📱 Phone/WhatsApp:</strong> 078 291 3680</p>
+                </div>
+            </div>
+
+            <div class="apply-form">
+                <form id="studentForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade">Grade Level *</label>
+                        <select id="grade" name="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="Grade 8">Grade 8</option>
+                            <option value="Grade 9">Grade 9</option>
+                            <option value="Grade 10">Grade 10</option>
+                            <option value="Grade 11">Grade 11</option>
+                            <option value="Grade 12">Grade 12</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Mathematics Literacy">Mathematics Literacy</option>
+                            <option value="Physics">Physics</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="classType">Type of Extra Class *</label>
+                        <select id="classType" name="classType" required>
+                            <option value="">Select Class Type</option>
+                            <option value="Online Class">Online Class</option>
+                            <option value="Face to Face Class">Face to Face Class</option>
+                            <option value="One on One Class">One on One Class</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your learning goals, specific topics you need help with, or any other requirements..."></textarea>
+                    </div>
+
+                    <div class="submit-section">
+                        <h3>Submit Your Application</h3>
+                        <p class="submit-description">
+                            Choose how you'd like to send your application. We'll respond within 24 hours.
+                        </p>
+                        <div class="contact-options">
+                            <button type="button" class="contact-option-btn" onclick="submitViaWhatsApp()">
+                                <span class="icon">📱</span>
+                                <span>Send via WhatsApp</span>
+                            </button>
+                            <button type="button" class="contact-option-btn" onclick="submitViaEmail()">
+                                <span class="icon">📧</span>
+                                <span>Send via Email</span>
+                            </button>
+                            <button type="button" class="contact-option-btn" onclick="submitViaPhone()">
+                                <span class="icon">📞</span>
+                                <span>Call to Apply</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="classroom" class="page">
+            <h2>Our Classroom</h2>
+            <p class="section-description">
+                We provide a comfortable and conducive learning environment equipped with modern teaching aids 
+                and resources to enhance your learning experience.
+            </p>
+            <div class="classroom-image">
+                <div class="classroom-content">
+                    <div class="classroom-icon">🎓</div>
+                    <div>Modern Classroom Facility</div>
+                    <div class="classroom-location">48 Hout Street, Jeppestown 2094, Johannesburg</div>
+                </div>
+            </div>
+            <div class="classroom-features">
+                <h3>Classroom Features:</h3>
+                <ul>
+                    <li>Spacious and well-ventilated rooms</li>
+                    <li>Interactive whiteboards and learning materials</li>
+                    <li>Small class sizes for personalized attention</li>
+                    <li>Comfortable seating arrangements</li>
+                    <li>Access to reference books and study materials</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="teachers" class="page">
+            <h2>Meet Our Teacher</h2>
+            <p class="section-description">
+                Our dedicated teacher is passionate about helping students succeed and has years of experience 
+                in Mathematics and Physics.
+            </p>
+            
+            <div class="teachers">
+                <div class="teacher-card" style="cursor: default;">
+                    <h3>Mr. Nkosi</h3>
+                    <p class="subject">Mathematics & Physics Teacher</p>
+                    <p class="contact-info">📧 Email: philasandenkosi8@gmail.com</p>
+                    <p class="contact-info">📱 Phone: 078 291 3680</p>
+                    <p class="teacher-description">
+                        Specialized in making complex mathematical and physics concepts easy to understand. 
+                        Experienced in teaching Grades 8-12 with a focus on problem-solving techniques 
+                        and exam preparation. Offers tutoring in Mathematics, Mathematics Literacy, and Physics 
+                        for all high school grades.
+                    </p>
+                    <div class="teacher-subjects">
+                        <h4>Subjects Offered:</h4>
+                        <ul>
+                            <li>Mathematics (Grades 8-12)</li>
+                            <li>Mathematics Literacy (Grades 10-12)</li>
+                            <li>Physics (Grades 10-12)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <p class="contact-intro">
+                    Have questions or ready to enroll? We're here to help! Reach out to us through any of the following methods:
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <strong>Phone</strong> 0696429712
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <strong>Email:</strong> philasandenkosi8@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <strong>Location:</strong> 48 Hout Street, Jeppestown 2094, Johannesburg
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⏰</span>
+                        <strong>Response Time:</strong> We typically respond within 24 hours
+                    </div>
+                    <div class="social-media">
+                        <h3>Follow Us on Social Media</h3>
+                        <div class="social-icons">
+                            <a href="#" class="social-link facebook">
+                                <span class="social-icon">📘</span>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link instagram">
+                                <span class="social-icon">📷</span>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal for Phone Call -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>📞 Call Us Now</h3>
+            <p>Click the button below to call us directly to discuss your application:</p>
+            <a href="tel:+27782913680" class="contact-option-btn modal-call-btn">
+                <span class="icon">📞</span>
+                <span>Call 078 291 3680</span>
+            </a>
+            <p class="modal-note">We're available to discuss your learning needs and schedule your classes.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Extra Classes - Mathematics & Physics. All rights reserved.</p>
+        <p>48 Hout Street, Jeppestown 2094, Johannesburg</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
