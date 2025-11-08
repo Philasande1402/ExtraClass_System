@@ -88,7 +88,7 @@ function validateForm() {
     return true;
 }
 
-// WhatsApp submission
+// WhatsApp submission - UPDATED WITH MR. MGAGA
 function submitViaWhatsApp() {
     if (!validateForm()) return;
 
@@ -100,11 +100,12 @@ function submitViaWhatsApp() {
     const classType = document.getElementById('classType').value;
     const message = document.getElementById('message').value.trim();
     
-    const whatsappMessage = `New Student Application%0A%0ATeacher: Mr. Nkosi%0A%0AStudent Details:%0A- Name: ${name}%0A- Email: ${email}%0A- Phone: ${phone}%0A- Grade: ${grade}%0A- Subject: ${subject}%0A- Class Type: ${classType}%0A- Additional Info: ${message || 'None'}`;
+    const whatsappMessage = `Dear Mr. Mgaga,%0A%0AI would like to apply for extra classes with the following details:%0A%0A*STUDENT APPLICATION DETAILS*%0A%0A*Full Name:* ${name}%0A*Email Address:* ${email}%0A*Phone Number:* ${phone}%0A*Grade Level:* ${grade}%0A*Subject Required:* ${subject}%0A*Preferred Class Type:* ${classType}%0A*Additional Information:* ${message || 'No additional information provided'}%0A%0AThank you for considering my application. I look forward to your response.%0A%0AKind regards,%0A${name}`;
     
-    const whatsappURL = `https://wa.me/27782913680?text=${whatsappMessage}`;
+    // Updated WhatsApp number
+    const whatsappURL = `https://wa.me/27606503136?text=${whatsappMessage}`;
     
-    showNotification('Opening WhatsApp... Your application will be sent when you press the send button.', 'success');
+    showNotification('Opening WhatsApp... Your formal application will be sent when you press the send button.', 'success');
     
     // Open in new tab on desktop, same tab on mobile
     setTimeout(() => {
@@ -116,7 +117,7 @@ function submitViaWhatsApp() {
     }, 2000);
 }
 
-// Email submission
+// Email submission - UPDATED WITH MR. MGAGA
 function submitViaEmail() {
     if (!validateForm()) return;
 
@@ -128,22 +129,23 @@ function submitViaEmail() {
     const classType = document.getElementById('classType').value;
     const additionalMessage = document.getElementById('message').value.trim();
     
-    const subjectLine = `New Student Application - ${name} - ${subject}`;
-    const body = `Teacher: Mr. Nkosi%0D%0A%0D%0AStudent Details:%0D%0A- Name: ${name}%0D%0A- Email: ${email}%0D%0A- Phone: ${phone}%0D%0A- Grade: ${grade}%0D%0A- Subject: ${subject}%0D%0A- Class Type: ${classType}%0D%0A- Additional Information: ${additionalMessage || 'None'}%0D%0A%0D%0AApplication submitted via website.`;
+    const subjectLine = `Student Application - ${name} - ${subject} - ${grade}`;
+    const body = `Dear Mr. Mgaga,%0D%0A%0D%0AI am writing to apply for extra classes and would appreciate your consideration.%0D%0A%0D%0APlease find my application details below:%0D%0A%0D%0A*STUDENT APPLICATION DETAILS*%0D%0A%0D%0A*Full Name:* ${name}%0D%0A*Email Address:* ${email}%0D%0A*Phone Number:* ${phone}%0D%0A*Grade Level:* ${grade}%0D%0A*Subject Required:* ${subject}%0D%0A*Preferred Class Type:* ${classType}%0D%0A*Additional Information:* ${additionalMessage || 'No additional information provided'}%0D%0A%0D%0AThank you for considering my application. I am available to discuss my learning needs and look forward to your response.%0D%0A%0D%0AYours sincerely,%0D%0A${name}`;
     
-    showNotification('Opening your email app... Please click "Send" to complete your application.', 'success');
+    showNotification('Opening your email app... Your formal application is ready to send.', 'success');
     
     setTimeout(() => {
-        const mailtoURL = `mailto:philasandenkosi8@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
+        // Updated email address
+        const mailtoURL = `mailto:mgagak722@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoURL;
     }, 2000);
 }
 
-// Phone submission
+// Phone submission - UPDATED NUMBER
 function submitViaPhone() {
     if (!validateForm()) return;
     
-    showNotification('Opening phone dialer... Please call us to complete your application.', 'success');
+    showNotification('Opening phone dialer... Please call us to discuss your application formally.', 'success');
     
     setTimeout(() => {
         document.getElementById('phoneModal').style.display = 'block';
