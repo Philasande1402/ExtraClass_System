@@ -426,57 +426,152 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
-/* Classroom Section */
-.classroom-image {
-    width: 100%;
-    max-width: 800px;
-    height: 300px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+/* Classroom Media Grid Styles */
+.classroom-media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.media-card {
+    background: white;
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.media-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.media-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.media-card:hover .media-element {
+    transform: scale(1.05);
+}
+
+.media-caption {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.media-caption h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.media-caption p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Video Play Button */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    margin: 1.5rem auto;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    opacity: 0.9;
+    transition: all 0.3s ease;
 }
 
-.classroom-content {
-    text-align: center;
+.media-container:hover .play-button {
+    background: rgba(255, 255, 255, 1);
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
-.classroom-icon {
-    font-size: clamp(3rem, 8vw, 4rem);
-    margin-bottom: 1rem;
+/* Hide play button when video is playing */
+video.playing ~ .play-button {
+    display: none;
 }
 
-.classroom-location {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-top: 0.5rem;
-}
-
+/* Updated Classroom Features */
 .classroom-features {
     background: var(--light-color);
-    padding: 1.2rem;
-    border-radius: 8px;
-    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
 }
 
 .classroom-features h3 {
     color: var(--secondary-color);
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    text-align: center;
 }
 
 .classroom-features ul {
-    list-style-position: inside;
-    line-height: 1.8;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.8rem;
+    list-style: none;
+    padding-left: 0;
 }
 
 .classroom-features li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    padding-left: 1.8rem;
+    position: relative;
     font-size: 0.95rem;
+}
+
+.classroom-features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* Location Info */
+.location-info {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.location-info h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.location-info p {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
 }
 
 /* Contact Section */
@@ -803,10 +898,6 @@ footer p {
         padding: 0.8rem;
     }
     
-    .classroom-image {
-        height: 250px;
-    }
-    
     .modal-content {
         margin: 20% auto;
         padding: 1.2rem;
@@ -839,6 +930,29 @@ footer p {
     }
     
     /* Mobile Responsive for new elements */
+    .classroom-media-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
+    .media-container {
+        height: 180px;
+    }
+    
+    .media-caption {
+        padding: 1rem;
+    }
+    
+    .classroom-features ul {
+        grid-template-columns: 1fr;
+    }
+    
+    .play-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
     .success-stats {
         grid-template-columns: 1fr;
         gap: 0.8rem;
@@ -891,10 +1005,6 @@ footer p {
         font-size: 1.5rem;
     }
     
-    .classroom-image {
-        height: 200px;
-    }
-    
     .modal-content {
         margin: 25% auto;
         width: 95%;
@@ -920,6 +1030,26 @@ footer p {
     .social-icon {
         margin-bottom: 0;
         font-size: 1.5rem;
+    }
+    
+    .media-container {
+        height: 160px;
+    }
+    
+    .media-caption h3 {
+        font-size: 1.1rem;
+    }
+    
+    .media-caption p {
+        font-size: 0.85rem;
+    }
+    
+    .classroom-features {
+        padding: 1.2rem;
+    }
+    
+    .location-info {
+        padding: 1.2rem;
     }
     
     .stat-number {
