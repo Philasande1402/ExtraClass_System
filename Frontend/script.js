@@ -11,6 +11,15 @@ function showSection(sectionId) {
     // Close mobile menu if open
     document.getElementById('nav-menu').classList.remove('show');
     
+    // Remove active class from all nav items
+    document.querySelectorAll('nav li').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to clicked nav item
+    const activeNavItem = document.querySelector(`nav a[onclick="showSection('${sectionId}')"]`).parentElement;
+    activeNavItem.classList.add('active');
+    
     // Scroll to top of page
     window.scrollTo(0, 0);
 }
@@ -222,6 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = '';
         });
     });
+    
+    // Set home navigation as active by default
+    document.querySelector('nav li:first-child').classList.add('active');
     
     // Prevent zoom on double-tap for buttons
     document.addEventListener('touchend', function(e) {

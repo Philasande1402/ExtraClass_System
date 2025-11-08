@@ -10,6 +10,7 @@
     --dark-color: #2c3e50;
     --light-color: #f8f9fa;
     --success-color: #28a745;
+    --active-color: #4CAF50;
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -73,14 +74,23 @@ nav a {
     color: white;
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s;
+    transition: all 0.3s;
     padding: 0.5rem 0.8rem;
     white-space: nowrap;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 nav a:hover {
     color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Active navigation link */
+nav li.active a {
+    background-color: var(--active-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
 }
 
 /* Container and Sections */
@@ -307,6 +317,113 @@ input:focus, select:focus, textarea:focus {
     position: absolute;
     left: 0;
     color: #ffd700;
+}
+
+/* Teacher Achievements Styles */
+.teacher-achievements {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.achievement-item:last-child {
+    margin-bottom: 0;
+}
+
+.achievement-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.achievement-content strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    color: #ffd700;
+}
+
+.achievement-content p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Success Stats */
+.success-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-item {
+    padding: 0.5rem;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Call to Action Section */
+.cta-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+}
+
+.cta-message {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.cta-message strong {
+    color: #ffd700;
+}
+
+.cta-button {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #2c3e50;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
 /* Classroom Section */
@@ -720,6 +837,27 @@ footer p {
         min-width: auto;
         max-width: none;
     }
+    
+    /* Mobile Responsive for new elements */
+    .success-stats {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .achievement-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .cta-section {
+        padding: 1.2rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -782,6 +920,18 @@ footer p {
     .social-icon {
         margin-bottom: 0;
         font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .achievement-item {
+        padding: 0.6rem;
+    }
+    
+    .cta-message {
+        font-size: 1rem;
     }
 }
 
