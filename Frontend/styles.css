@@ -259,7 +259,14 @@ input:focus, select:focus, textarea:focus {
 .teacher-card .subject {
     font-size: 1.1rem;
     opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.teacher-card .experience {
+    font-size: 1rem;
+    opacity: 0.9;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .contact-info {
