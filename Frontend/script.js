@@ -88,6 +88,12 @@ function validateForm() {
     return true;
 }
 
+// Function to clear form inputs
+function clearForm() {
+    document.getElementById('studentForm').reset();
+    showNotification('Form has been cleared successfully', 'success');
+}
+
 // WhatsApp submission - UPDATED WITH MR. MGAGA
 function submitViaWhatsApp() {
     if (!validateForm()) return;
@@ -106,6 +112,9 @@ function submitViaWhatsApp() {
     const whatsappURL = `https://wa.me/27606503136?text=${whatsappMessage}`;
     
     showNotification('Opening WhatsApp... Your formal application will be sent when you press the send button.', 'success');
+    
+    // Clear the form
+    clearForm();
     
     // Open in new tab on desktop, same tab on mobile
     setTimeout(() => {
@@ -134,6 +143,9 @@ function submitViaEmail() {
     
     showNotification('Opening your email app... Your formal application is ready to send.', 'success');
     
+    // Clear the form
+    clearForm();
+    
     setTimeout(() => {
         // Updated email address
         const mailtoURL = `mailto:mgagak722@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
@@ -146,6 +158,9 @@ function submitViaPhone() {
     if (!validateForm()) return;
     
     showNotification('Opening phone dialer... Please call us to discuss your application formally.', 'success');
+    
+    // Clear the form
+    clearForm();
     
     setTimeout(() => {
         document.getElementById('phoneModal').style.display = 'block';
