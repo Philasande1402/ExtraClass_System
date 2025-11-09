@@ -218,39 +218,6 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Video play functionality for classroom section
-function initVideoPlayers() {
-    const videoContainers = document.querySelectorAll('.media-container');
-    
-    videoContainers.forEach(container => {
-        const video = container.querySelector('video');
-        const playButton = container.querySelector('.play-button');
-        
-        if (video && playButton) {
-            // Play video when play button is clicked
-            playButton.addEventListener('click', function() {
-                video.play();
-                video.classList.add('playing');
-                playButton.style.display = 'none';
-            });
-            
-            // Show play button again when video ends
-            video.addEventListener('ended', function() {
-                video.classList.remove('playing');
-                playButton.style.display = 'flex';
-            });
-            
-            // Pause video when it's not in viewport
-            video.addEventListener('pause', function() {
-                if (!video.ended) {
-                    video.classList.remove('playing');
-                    playButton.style.display = 'flex';
-                }
-            });
-        }
-    });
-}
-
 // Touch-friendly improvements
 document.addEventListener('DOMContentLoaded', function() {
     // Add touch feedback to buttons
@@ -274,9 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
         }
     }, { passive: false });
-    
-    // Initialize video players
-    initVideoPlayers();
     
     console.log('Extra Classes website loaded successfully!');
 });
