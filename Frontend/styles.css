@@ -463,6 +463,10 @@ input:focus, select:focus, textarea:focus {
     transition: transform 0.5s ease;
 }
 
+.youtube-video {
+    border: none;
+}
+
 .media-card:hover .media-element {
     transform: scale(1.05);
 }
@@ -485,36 +489,6 @@ input:focus, select:focus, textarea:focus {
     color: #666;
     font-size: 0.9rem;
     line-height: 1.5;
-}
-
-/* Video Play Button */
-.play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    cursor: pointer;
-    opacity: 0.9;
-    transition: all 0.3s ease;
-}
-
-.media-container:hover .play-button {
-    background: rgba(255, 255, 255, 1);
-    transform: translate(-50%, -50%) scale(1.1);
-}
-
-/* Hide play button when video is playing */
-video.playing ~ .play-button {
-    display: none;
 }
 
 /* Updated Classroom Features */
@@ -945,12 +919,6 @@ footer p {
     
     .classroom-features ul {
         grid-template-columns: 1fr;
-    }
-    
-    .play-button {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
     }
     
     .success-stats {
