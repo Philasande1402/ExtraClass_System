@@ -1054,3 +1054,37 @@ footer p {
         padding: 0.7rem;
     }
 }
+
+/* Background image styles */
+        body {
+            background-image: url('download.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Overlay to ensure text readability */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Ensure header and footer have solid backgrounds */
+        header, footer, nav {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Mobile responsiveness for background */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+            }
+        }
