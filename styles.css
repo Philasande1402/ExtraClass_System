@@ -14,17 +14,45 @@
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Background image styles */
 body {
     font-family: var(--font-main);
     line-height: 1.6;
     color: #333;
     background-color: #f5f7fa;
     font-size: 16px;
+    background-image: url('download.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Overlay to ensure text readability */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+.page {
+    background: rgba(255, 255, 255, 0.7); /* More transparent */
+    backdrop-filter: blur(2px);
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+}
+
+.page.active {
+    display: block;
 }
 
 /* Header Styles */
 header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: rgba(44, 62, 80, 0.75); /* More transparent */
+    backdrop-filter: blur(2px);
     color: white;
     padding: 1.5rem 1rem;
     text-align: center;
@@ -43,7 +71,8 @@ header {
 
 /* Navigation Styles */
 nav {
-    background: var(--dark-color);
+    background: rgba(44, 62, 80, 0.75); /* More transparent */
+    backdrop-filter: blur(2px);
     padding: 0.5rem 1rem;
     position: sticky;
     top: 0;
@@ -100,19 +129,6 @@ nav li.active a {
     padding: 1rem;
 }
 
-.page {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
 h2 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
@@ -130,7 +146,7 @@ h2 {
 
 /* Teacher Introduction */
 .teacher-intro {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.65) 0%, rgba(118, 75, 162, 0.65) 100%); /* More transparent */
     color: white;
     padding: 1.5rem;
     border-radius: 10px;
@@ -156,7 +172,7 @@ h2 {
 
 /* Application Form */
 .apply-form {
-    background: var(--light-color);
+    background: rgba(248, 249, 250, 0.65); /* More transparent */
     padding: 1.5rem;
     border-radius: 10px;
     max-width: 600px;
@@ -183,17 +199,19 @@ input, select, textarea {
     font-size: 1rem;
     transition: border-color 0.3s;
     font-family: inherit;
+    background: rgba(255, 255, 255, 0.8); /* More transparent inputs */
 }
 
 input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .submit-section {
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 2px solid #ddd;
+    border-top: 2px solid rgba(221, 221, 221, 0.5); /* More transparent border */
     text-align: center;
 }
 
@@ -217,7 +235,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .contact-option-btn {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%); /* More transparent */
     color: white;
     padding: 1rem 0.8rem;
     border: none;
@@ -237,6 +255,7 @@ input:focus, select:focus, textarea:focus {
 .contact-option-btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Full color on hover */
 }
 
 .contact-option-btn .icon {
@@ -252,13 +271,17 @@ input:focus, select:focus, textarea:focus {
 }
 
 .teacher-card {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.65) 0%, rgba(118, 75, 162, 0.65) 100%); /* More transparent */
     padding: 1.5rem;
     border-radius: 10px;
     color: white;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     max-width: 500px;
     margin: 0 auto;
+}
+
+.teacher-card:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%); /* Slightly more opaque on hover */
 }
 
 .teacher-card h3 {
@@ -409,7 +432,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .cta-button {
-    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.8) 0%, rgba(255, 237, 78, 0.8) 100%); /* More transparent */
     color: #2c3e50;
     border: none;
     padding: 1rem 2rem;
@@ -424,9 +447,10 @@ input:focus, select:focus, textarea:focus {
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); /* Full color on hover */
 }
 
-/* Classroom Media Grid Styles */
+/* Classroom Media Grid Styles - ALL IMAGES NOW */
 .classroom-media-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -435,7 +459,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .media-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.65); /* More transparent */
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -447,6 +471,7 @@ input:focus, select:focus, textarea:focus {
 .media-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, 0.8); /* Slightly more opaque on hover */
 }
 
 .media-container {
@@ -461,10 +486,6 @@ input:focus, select:focus, textarea:focus {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
-}
-
-.youtube-video {
-    border: none;
 }
 
 .media-card:hover .media-element {
@@ -493,7 +514,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Updated Classroom Features */
 .classroom-features {
-    background: var(--light-color);
+    background: rgba(248, 249, 250, 0.65); /* More transparent */
     padding: 1.5rem;
     border-radius: 10px;
     margin: 2rem 0;
@@ -531,7 +552,7 @@ input:focus, select:focus, textarea:focus {
 
 /* Location Info */
 .location-info {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.65) 0%, rgba(118, 75, 162, 0.65) 100%); /* More transparent */
     color: white;
     padding: 1.5rem;
     border-radius: 10px;
@@ -559,7 +580,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .contact-details {
-    background: var(--light-color);
+    background: rgba(248, 249, 250, 0.65); /* More transparent */
     padding: 1.5rem;
     border-radius: 10px;
     margin: 1.5rem auto;
@@ -570,7 +591,7 @@ input:focus, select:focus, textarea:focus {
     margin: 1rem 0;
     font-size: 1rem;
     padding: 0.5rem 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.5); /* More transparent border */
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -589,7 +610,7 @@ input:focus, select:focus, textarea:focus {
 .social-media {
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 2px solid #eee;
+    border-top: 2px solid rgba(238, 238, 238, 0.5); /* More transparent border */
 }
 
 .social-media h3 {
@@ -615,13 +636,14 @@ input:focus, select:focus, textarea:focus {
     border-radius: 8px;
     transition: all 0.3s ease;
     min-width: 100px;
-    background: white;
+    background: rgba(255, 255, 255, 0.65); /* More transparent */
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .social-link:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background: white; /* Full white on hover */
 }
 
 .social-link.facebook:hover {
@@ -641,7 +663,8 @@ input:focus, select:focus, textarea:focus {
 
 /* Footer */
 footer {
-    background: var(--dark-color);
+    background: rgba(44, 62, 80, 0.75); /* More transparent */
+    backdrop-filter: blur(2px);
     color: white;
     text-align: center;
     padding: 1.5rem 1rem;
@@ -671,7 +694,7 @@ footer p {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85); /* More transparent */
     margin: 10% auto;
     padding: 1.5rem;
     border-radius: 10px;
@@ -741,7 +764,7 @@ footer p {
     z-index: 10000;
     min-width: 300px;
     max-width: 500px;
-    background: white;
+    background: rgba(255, 255, 255, 0.85); /* More transparent */
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     border-left: 4px solid #667eea;
@@ -810,6 +833,10 @@ footer p {
 
 /* Mobile-First Media Queries */
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+    
     .container {
         padding: 0.5rem;
     }
