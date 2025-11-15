@@ -1780,3 +1780,22 @@ footer p {
         padding: 0.7rem;
     }
 }
+
+.application-counter {
+    margin-top: 1rem;
+    padding: 0.3rem;
+    text-align: center;
+}
+
+.application-counter strong {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#applicationCounter {
+    color: #4CAF50;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+}
