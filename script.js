@@ -1,19 +1,24 @@
-// DOM Ready function
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-});
-
-// Message counter system
+// Message counter system - PERSISTENT
 let messageCount = 0;
 
-// Initialize counter from localStorage
+// Initialize counter from localStorage - IMPROVED
 function initializeCounter() {
-    const savedCount = localStorage.getItem('applicationCount');
-    messageCount = savedCount ? parseInt(savedCount) : 0;
-    updateCounterDisplay();
+    try {
+        const savedCount = localStorage.getItem('applicationCount');
+        // Ensure we have a valid number, default to 0 if not
+        messageCount = savedCount ? parseInt(savedCount) : 0;
+        if (isNaN(messageCount)) {
+            messageCount = 0;
+        }
+        updateCounterDisplay();
+        console.log('Counter initialized:', messageCount);
+    } catch (e) {
+        messageCount = 0;
+        console.log('Counter: Using fallback');
+    }
 }
 
-// Update counter display
+// Update counter display - IMPROVED
 function updateCounterDisplay() {
     const counterElement = document.getElementById('applicationCounter');
     if (counterElement) {
@@ -21,12 +26,23 @@ function updateCounterDisplay() {
     }
 }
 
-// Increment counter and save to localStorage
+// Increment counter - IMPROVED PERSISTENCE
 function incrementCounter() {
     messageCount++;
-    localStorage.setItem('applicationCount', messageCount.toString());
+    try {
+        localStorage.setItem('applicationCount', messageCount.toString());
+        console.log('Counter updated:', messageCount);
+    } catch (e) {
+        console.log('Counter: Could not save to localStorage');
+    }
     updateCounterDisplay();
 }
+
+// DOM Ready function
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+    initializeCounter(); // DOUBLE INITIALIZATION FOR SAFETY
+});
 
 function initializeApp() {
     // Initialize mobile menu
@@ -91,7 +107,7 @@ function initializeApp() {
     // Set home navigation as active by default
     setActiveNav('home');
     
-    // Initialize counter
+    // Initialize counter here too for redundancy
     initializeCounter();
     
     // Initialize any animations or additional features
