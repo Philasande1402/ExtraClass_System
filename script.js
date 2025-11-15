@@ -97,6 +97,17 @@ function initializeAnimations() {
     });
 }
 
+// Phone input validation to allow only digits
+function validatePhoneInput(input) {
+    // Remove any non-digit characters
+    input.value = input.value.replace(/\D/g, '');
+    
+    // Limit to 10 digits
+    if (input.value.length > 10) {
+        input.value = input.value.slice(0, 10);
+    }
+}
+
 // Mobile menu functionality
 function toggleMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
@@ -201,11 +212,20 @@ function validateForm() {
         return false;
     }
     
-    // Basic phone validation
-    const phoneRegex = /^[0-9+\-\s()]{10,}$/;
-    if (!phoneRegex.test(phone)) {
-        showNotification('Please enter a valid phone number', 'error');
+    // Strict phone validation: exactly 10 digits only
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 10) {
+        showNotification('Please enter exactly 10 digits for phone number (numbers only)', 'error');
         document.getElementById('phone').focus();
+        document.getElementById('phone').select();
+        return false;
+    }
+    
+    // Ensure phone contains only digits
+    if (!/^\d+$/.test(phoneDigits)) {
+        showNotification('Phone number must contain only numbers (0-9)', 'error');
+        document.getElementById('phone').focus();
+        document.getElementById('phone').select();
         return false;
     }
     
@@ -242,7 +262,8 @@ function submitViaWhatsApp() {
     const classType = document.getElementById('classType').value;
     const message = document.getElementById('message').value.trim();
     
-    const whatsappMessage = `Dear Mr. Mgaga,%0A%0AI would like to apply for extra classes with the following details:%0A%0A*STUDENT APPLICATION DETAILS*%0A%0A*Full Name:* ${name}%0A*Email Address:* ${email}%0A*Phone Number:* ${phone}%0A*Grade Level:* ${grade}%0A*Subject Required:* ${subject}%0A*Preferred Class Type:* ${classType}%0A*Additional Information:* ${message || 'No additional information provided'}%0A%0AThank you for considering my application. I look forward to your response.%0A%0AKind regards,%0A${name}`;
+    // Better formatted WhatsApp message
+    const whatsappMessage = `Dear Mr. Mgaga,%0A%0AI would like to apply for extra classes and would appreciate your consideration.%0A%0A*STUDENT APPLICATION DETAILS*%0A%0A*Full Name:* ${name}%0A*Email Address:* ${email}%0A*Phone Number:* ${phone}%0A*Grade Level:* ${grade}%0A*Subject Required:* ${subject}%0A*Preferred Class Type:* ${classType}%0A*Additional Information:* ${message || 'No additional information provided'}%0A%0AThank you for considering my application. I look forward to your response.%0A%0AKind regards,%0A${name}`;
     
     // Updated WhatsApp number to 0606503136
     const whatsappURL = `https://wa.me/27606503136?text=${whatsappMessage}`;
@@ -273,7 +294,29 @@ function submitViaEmail() {
     const additionalMessage = document.getElementById('message').value.trim();
     
     const subjectLine = `Student Application - ${name} - ${subject} - ${grade}`;
-    const body = `Dear Mr. Mgaga,%0D%0A%0D%0AI am writing to apply for extra classes and would appreciate your consideration.%0D%0A%0D%0APlease find my application details below:%0D%0A%0D%0A*STUDENT APPLICATION DETAILS*%0D%0A%0D%0A*Full Name:* ${name}%0D%0A*Email Address:* ${email}%0D%0A*Phone Number:* ${phone}%0D%0A*Grade Level:* ${grade}%0D%0A*Subject Required:* ${subject}%0D%0A*Preferred Class Type:* ${classType}%0D%0A*Additional Information:* ${additionalMessage || 'No additional information provided'}%0D%0A%0D%0AThank you for considering my application. I am available to discuss my learning needs and look forward to your response.%0D%0A%0D%0AYours sincerely,%0D%0A${name}`;
+    
+    // Properly formatted email body with line breaks and structure
+    const body = `Dear Mr. Mgaga,
+
+I am writing to apply for extra classes and would appreciate your consideration.
+
+Please find my application details below:
+
+STUDENT APPLICATION DETAILS
+─────────────────────────────
+
+Full Name: ${name}
+Email Address: ${email}
+Phone Number: ${phone}
+Grade Level: ${grade}
+Subject Required: ${subject}
+Preferred Class Type: ${classType}
+Additional Information: ${additionalMessage || 'No additional information provided'}
+
+Thank you for considering my application. I am available to discuss my learning needs and look forward to your response.
+
+Yours sincerely,
+${name}`;
     
     showNotification('Opening your email app... Your application is ready to send.', 'success');
     
