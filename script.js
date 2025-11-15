@@ -3,6 +3,31 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
+// Message counter system
+let messageCount = 0;
+
+// Initialize counter from localStorage
+function initializeCounter() {
+    const savedCount = localStorage.getItem('applicationCount');
+    messageCount = savedCount ? parseInt(savedCount) : 0;
+    updateCounterDisplay();
+}
+
+// Update counter display
+function updateCounterDisplay() {
+    const counterElement = document.getElementById('applicationCounter');
+    if (counterElement) {
+        counterElement.textContent = messageCount;
+    }
+}
+
+// Increment counter and save to localStorage
+function incrementCounter() {
+    messageCount++;
+    localStorage.setItem('applicationCount', messageCount.toString());
+    updateCounterDisplay();
+}
+
 function initializeApp() {
     // Initialize mobile menu
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -65,6 +90,9 @@ function initializeApp() {
 
     // Set home navigation as active by default
     setActiveNav('home');
+    
+    // Initialize counter
+    initializeCounter();
     
     // Initialize any animations or additional features
     initializeAnimations();
@@ -253,6 +281,7 @@ function validateForm() {
 // WhatsApp submission - UPDATED NUMBER
 function submitViaWhatsApp() {
     if (!validateForm()) return;
+    incrementCounter();
 
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -284,6 +313,7 @@ function submitViaWhatsApp() {
 // Email submission
 function submitViaEmail() {
     if (!validateForm()) return;
+    incrementCounter();
 
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
@@ -331,6 +361,7 @@ ${name}`;
 // Phone submission
 function submitViaPhone() {
     if (!validateForm()) return;
+    incrementCounter();
     
     showNotification('Opening phone dialer... Please call us to discuss your application.', 'success');
     
