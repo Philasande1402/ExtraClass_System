@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extra Classes - Maths, Maths Lit & Physics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="theme-color" content="#667eea">
+    <meta name="description" content="Professional extra classes in Mathematics, Mathematics Literacy & Physics for Grades 10-12 in Johannesburg">
+    <title>Extra Classes - Maths, Maths Lit & Physics | Johannesburg</title>
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
@@ -11,117 +13,292 @@
         <div class="header-content">
             <h1>Extra Classes</h1>
             <p>Excellence in Mathematics, Mathematics Literacy & Physics</p>
+            <div class="header-contact">
+                <span>📞 069 642 9712</span>
+                <span>📍 48 Hout Street, Jeppestown</span>
+            </div>
         </div>
     </header>
 
-    <nav>
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+    <nav id="main-nav">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
         <ul id="nav-menu">
-            <li><a href="#" onclick="showSection('home')">Home</a></li>
-            <li><a href="#" onclick="showSection('apply')">Apply Now</a></li>
-            <li><a href="#" onclick="showSection('classroom')">Classroom</a></li>
-            <li><a href="#" onclick="showSection('teachers')">Teachers</a></li>
-            <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+            <li><a href="#home" data-section="home">Home</a></li>
+            <li><a href="#apply" data-section="apply">Apply Now</a></li>
+            <li><a href="#classroom" data-section="classroom">Classroom</a></li>
+            <li><a href="#teachers" data-section="teachers">Teachers</a></li>
+            <li><a href="#contact" data-section="contact">Contact</a></li>
         </ul>
     </nav>
 
     <div class="container">
+        <!-- Home Section -->
         <section id="home" class="page active">
-            <h2>Welcome to Our Extra Classes</h2>
-            <p class="intro-text">
-                We offer specialized tutoring in Mathematics, Mathematics Literacy and Physics to help learners excel in their studies. 
-                Our experienced teachers provide personalized attention and effective learning strategies to ensure 
-                every student reaches their full potential.
-            </p>
-            
+            <div class="hero-section">
+                <h2>Welcome to Academic Excellence</h2>
+                <p class="hero-text">
+                    Transform your academic journey with specialized tutoring in <strong>Mathematics</strong>, 
+                    <strong>Mathematics Literacy</strong>, and <strong>Physics</strong>. Our proven teaching 
+                    methodology has helped hundreds of students achieve outstanding results.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Pass Rate</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-number">70+</span>
+                        <span class="stat-label">University Students</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-number">40+</span>
+                        <span class="stat-label">College Graduates</span>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="cta-primary" onclick="showSection('apply')">Start Learning Today</button>
+                    <button class="cta-secondary" onclick="showSection('contact')">Contact Us</button>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Personalized Learning</h3>
+                    <p>Customized lesson plans tailored to each student's learning style and pace</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Comprehensive Curriculum</h3>
+                    <p>Covering all CAPS syllabus requirements with extensive practice materials</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Proven Results</h3>
+                    <p>Consistent track record of improving grades and exam performance</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Expert Teacher</h3>
+                    <p>Experienced educator with 5+ years of specialized teaching experience</p>
+                </div>
+            </div>
+
+            <div class="subjects-overview">
+                <h3>Subjects We Offer</h3>
+                <div class="subjects-grid">
+                    <div class="subject-card">
+                        <h4>Mathematics</h4>
+                        <p>Grades 10-12</p>
+                        <ul>
+                            <li>Algebra & Functions</li>
+                            <li>Calculus & Geometry</li>
+                            <li>Trigonometry</li>
+                            <li>Probability & Statistics</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Mathematics Literacy</h4>
+                        <p>Grades 10-12</p>
+                        <ul>
+                            <li>Financial Mathematics</li>
+                            <li>Measurement</li>
+                            <li>Maps & Plans</li>
+                            <li>Data Handling</li>
+                        </ul>
+                    </div>
+                    <div class="subject-card">
+                        <h4>Physics</h4>
+                        <p>Grades 10-12</p>
+                        <ul>
+                            <li>Mechanics</li>
+                            <li>Electricity & Magnetism</li>
+                            <li>Waves & Optics</li>
+                            <li>Modern Physics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="location-info">
-                <h3>📍 Location</h3>
+                <h3>📍 Convenient Location</h3>
                 <p><strong>Address:</strong> 48 Hout Street, Jeppestown 2094, Johannesburg</p>
-                <p>We are conveniently located in the heart of Johannesburg, making it easy for students to access quality education.</p>
+                <p>Our centrally located facility is easily accessible by public transport and offers a safe, conducive learning environment with modern amenities.</p>
+                <div class="location-features">
+                    <span>🚍 Easy Public Transport Access</span>
+                    <span>🅿️ Secure Parking</span>
+                    <span>🌍 Central Location</span>
+                </div>
             </div>
         </section>
 
+        <!-- Apply Now Section -->
         <section id="apply" class="page">
             <h2>Apply for Extra Classes</h2>
             
+            <div class="application-process">
+                <h3>Simple 3-Step Application Process</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Fill Application</h4>
+                        <p>Complete the form below with your details</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Choose Submission</h4>
+                        <p>Select your preferred contact method</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Get Confirmation</h4>
+                        <p>We'll contact you within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="teacher-intro">
-                <h3>Your Teacher: Mr. Mgaga</h3>
+                <h3>Your Dedicated Teacher: Mr. Mgaga</h3>
+                <div class="teacher-highlights">
+                    <div class="highlight">
+                        <span class="highlight-icon">🎓</span>
+                        <span>5+ Years Teaching Experience</span>
+                    </div>
+                    <div class="highlight">
+                        <span class="highlight-icon">⭐</span>
+                        <span>95% Student Pass Rate</span>
+                    </div>
+                    <div class="highlight">
+                        <span class="highlight-icon">🏆</span>
+                        <span>70+ University Success Stories</span>
+                    </div>
+                </div>
                 <p class="teacher-description">
                     Specialized in making complex mathematical and physics concepts easy to understand. 
-                    Experienced in teaching Grades 10-12 with a focus on problem-solving techniques 
-                    and exam preparation. Teaching since 2019.
+                    With extensive experience teaching Grades 10-12, I focus on building strong foundational 
+                    knowledge and developing effective problem-solving techniques. My teaching approach 
+                    combines theoretical understanding with practical application to ensure lasting comprehension.
                 </p>
+            </div>
+
+            <div class="class-options">
+                <h3>Available Class Types</h3>
+                <div class="options-grid">
+                    <div class="option-card">
+                        <h4>👥 Group Classes</h4>
+                        <p>Small group sessions (4-35 students) for collaborative learning</p>
+                        <ul>
+                            <li>Affordable rates</li>
+                            <li>Peer learning environment</li>
+                            <li>Regular sessions</li>
+                        </ul>
+                    </div>
+                    <div class="option-card">
+                        <h4>💻 Online Classes</h4>
+                        <p>Virtual lessons with interactive digital whiteboard</p>
+                        <ul>
+                            <li>Learn from anywhere</li>
+                            <li>Flexible scheduling</li>
+                        </ul>
+                    </div>
+                    <div class="option-card">
+                        <h4>👤 One-on-One</h4>
+                        <p>Personalized individual attention</p>
+                        <ul>
+                            <li>Customized pace</li>
+                            <li>Focused attention</li>
+                            <li>Flexible curriculum</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="apply-form">
                 <form id="studentForm">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                    <div class="form-section">
+                        <h4>Personal Information</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="069 642 9712">
+                            </div>
+                            <div class="form-group">
+                                <label for="grade">Grade Level *</label>
+                                <select id="grade" name="grade" required>
+                                    <option value="">Select Grade</option>
+                                    <option value="Grade 10">Grade 10</option>
+                                    <option value="Grade 11">Grade 11</option>
+                                    <option value="Grade 12">Grade 12</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
+                    <div class="form-section">
+                        <h4>Class Preferences</h4>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select Subject</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Mathematics Literacy">Mathematics Literacy</option>
+                                    <option value="Physics">Physics</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="classType">Type of Extra Class *</label>
+                                <select id="classType" name="classType" required>
+                                    <option value="">Select Class Type</option>
+                                    <option value="Online Class">Online Class</option>
+                                    <option value="Face to Face Class">Face to Face Class</option>
+                                    <option value="One on One Class">One on One Class</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="grade">Grade Level *</label>
-                        <select id="grade" name="grade" required>
-                            <option value="">Select Grade</option>
-                            <option value="Grade 10">Grade 10</option>
-                            <option value="Grade 11">Grade 11</option>
-                            <option value="Grade 12">Grade 12</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <select id="subject" name="subject" required>
-                            <option value="">Select Subject</option>
-                            <option value="Mathematics">Mathematics</option>
-                            <option value="Mathematics Literacy">Mathematics Literacy</option>
-                            <option value="Physics">Physics</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="classType">Type of Extra Class *</label>
-                        <select id="classType" name="classType" required>
-                            <option value="">Select Class Type</option>
-                            <option value="Online Class">Online Class</option>
-                            <option value="Face to Face Class">Face to Face Class</option>
-                            <option value="One on One Class">One on One Class</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Additional Information</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your learning goals, specific topics you need help with, or any other requirements..."></textarea>
+                    <div class="form-section">
+                        <h4>Additional Information</h4>
+                        <div class="form-group">
+                            <label for="message">Learning Goals & Requirements</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us about your learning goals, specific topics you need help with, preferred schedule, or any other requirements..."></textarea>
+                        </div>
                     </div>
 
                     <div class="submit-section">
                         <h3>Submit Your Application</h3>
                         <p class="submit-description">
-                            Choose how you'd like to send your application. We'll respond within 24 hours.
+                            Choose how you'd like to send your application. We'll respond within 24 hours to discuss 
+                            your learning needs and schedule your first session.
                         </p>
                         <div class="contact-options">
                             <button type="button" class="contact-option-btn" onclick="submitViaWhatsApp()">
                                 <span class="icon">📱</span>
                                 <span>Send via WhatsApp</span>
+                                <small>Instant submission</small>
                             </button>
                             <button type="button" class="contact-option-btn" onclick="submitViaEmail()">
                                 <span class="icon">📧</span>
                                 <span>Send via Email</span>
+                                <small>Detailed application</small>
                             </button>
                             <button type="button" class="contact-option-btn" onclick="submitViaPhone()">
                                 <span class="icon">📞</span>
                                 <span>Call to Apply</span>
+                                <small>Direct conversation</small>
                             </button>
                         </div>
                     </div>
@@ -129,131 +306,208 @@
             </div>
         </section>
 
+        <!-- Classroom Section -->
         <section id="classroom" class="page">
-            <h2>Our Classroom Environment</h2>
+            <h2>Our Learning Environment</h2>
             <p class="section-description">
-                We provide a comfortable and conducive learning environment equipped with modern teaching aids 
-                and resources to enhance your learning experience. Take a virtual tour of our facilities below.
+                We provide modern, comfortable learning spaces equipped with the latest teaching aids and resources 
+                to create an optimal environment for academic success and personal growth.
             </p>
             
+            <div class="classroom-highlights">
+                <div class="highlight-card">
+                    <span class="highlight-icon">🔬</span>
+                    <h3>Modern Equipment</h3>
+                    <p>Interactive whiteboards and digital learning tools</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">💻</span>
+                    <h3>Technology Integration</h3>
+                    <p>High-speed internet and educational software</p>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-icon">📚</span>
+                    <h3>Resource Library</h3>
+                    <p>Comprehensive collection of textbooks and references</p>
+                </div>
+            </div>
+
             <div class="classroom-media-grid">
                 <!-- Image Card 1 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                        <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
                              alt="Modern classroom setup with interactive whiteboard" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Interactive Learning Space</h3>
-                        <p>Our modern classroom equipped with interactive whiteboards and comfortable seating</p>
+                        <p>Our modern classroom equipped with interactive whiteboards and comfortable seating arrangements for optimal learning</p>
                     </div>
                 </div>
                 
-                <!-- Image Card 2 - Mathematics Learning -->
+                <!-- Image Card 2 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
                              alt="Mathematics learning session" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Mathematics Tutorial</h3>
-                        <p>Step-by-step mathematics learning with personalized attention</p>
+                        <p>Step-by-step mathematics learning with personalized attention and comprehensive problem-solving techniques</p>
                     </div>
                 </div>
                 
                 <!-- Image Card 3 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                        <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
                              alt="Study materials and resources available" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Resource Center</h3>
-                        <p>Access to comprehensive study materials, textbooks, and reference guides</p>
+                        <p>Access to comprehensive study materials, textbooks, workbooks, and reference guides for all subjects</p>
                     </div>
                 </div>
                 
-                <!-- Image Card 4 - Physics Demonstration -->
+                <!-- Image Card 4 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1636466497217-26a8c3af2913?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1156&q=80" 
+                        <img src="https://i.etsystatic.com/22411947/r/il/cad418/2999333476/il_570xN.2999333476_iy4p.jpg" 
                              alt="Physics experiment demonstration" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Physics Demonstration</h3>
-                        <p>Practical physics experiments and concept demonstrations</p>
+                        <p>Practical physics experiments and concept demonstrations to enhance understanding of complex principles</p>
                     </div>
                 </div>
 
                 <!-- Image Card 5 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" 
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-4.0.3&auto=format&fit=crop&w=1172&q=80" 
                              alt="Student collaboration area" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Collaborative Learning</h3>
-                        <p>Dedicated spaces for group work and peer-to-peer learning sessions</p>
+                        <p>Dedicated spaces for group work, peer-to-peer learning sessions, and collaborative problem-solving</p>
                     </div>
                 </div>
 
-                <!-- Image Card 6 - Problem Solving -->
+                <!-- Image Card 6 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1122&q=80" 
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1122&q=80" 
                              alt="Group problem solving session" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Group Problem Solving</h3>
-                        <p>Students working together to solve challenging mathematical problems</p>
+                        <p>Students working together to solve challenging mathematical problems and share different approaches</p>
                     </div>
                 </div>
             </div>
             
             <div class="classroom-features">
-                <h3>Classroom Features:</h3>
-                <ul>
-                    <li>Spacious and well-ventilated rooms</li>
-                    <li>Interactive whiteboards and learning materials</li>
-                    <li>Small class sizes for personalized attention</li>
-                    <li>Comfortable seating arrangements</li>
-                    <li>Access to reference books and study materials</li>
-                    <li>High-speed internet for online resources</li>
-                    <li>Modern audio-visual equipment</li>
-                    <li>Dedicated study areas</li>
-                    <li>Collaborative learning spaces</li>
-                    <li>Quiet zones for individual study</li>
-                </ul>
+                <h3>Classroom Features & Amenities</h3>
+                <div class="features-grid">
+                    <div class="feature-column">
+                        <h4>Learning Environment</h4>
+                        <ul>
+                            <li>Spacious and well-ventilated rooms</li>
+                            <li>Comfortable ergonomic seating</li>
+                            <li>Natural lighting with adjustable blinds</li>
+                            <li>Climate control for optimal comfort</li>
+                            <li>Quiet zones for individual study</li>
+                        </ul>
+                    </div>
+                    <div class="feature-column">
+                        <h4>Teaching Technology</h4>
+                        <ul>
+                            <li>Interactive smart whiteboards</li>
+                            <li>High-speed Wi-Fi connectivity</li>
+                            <li>Modern audio-visual equipment</li>
+                            <li>Digital projectors and screens</li>
+                            <li>Educational software access</li>
+                        </ul>
+                    </div>
+                    <div class="feature-column">
+                        <h4>Learning Resources</h4>
+                        <ul>
+                            <li>Comprehensive textbook library</li>
+                            <li>Past exam paper collections</li>
+                            <li>Reference books and guides</li>
+                            <li>Practice workbooks and worksheets</li>
+                            <li>Online learning platform access</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             
-            <div class="location-info">
-                <h3>📍 Location Details</h3>
-                <p><strong>Address:</strong> 48 Hout Street, Jeppestown 2094, Johannesburg</p>
-                <p>We are conveniently located in the heart of Johannesburg, making it easy for students to access quality education. 
-                   Our facility is easily accessible by public transport and has secure parking available.</p>
+            <div class="study-support">
+                <h3>Additional Learning Support</h3>
+                <div class="support-grid">
+                    <div class="support-item">
+                        <span class="support-icon">📝</span>
+                        <div class="support-content">
+                            <h4>Regular Assessments</h4>
+                            <p>Weekly tests and monthly exams to track progress and identify areas for improvement</p>
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <span class="support-icon">📋</span>
+                        <div class="support-content">
+                            <h4>Progress Reports</h4>
+                            <p>Detailed progress reports sent to parents and students with performance analysis</p>
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <span class="support-icon">🎯</span>
+                        <div class="support-content">
+                            <h4>Exam Preparation</h4>
+                            <p>Comprehensive exam preparation including past papers and revision strategies</p>
+                        </div>
+                    </div>
+                    <div class="support-item">
+                        <span class="support-icon">💬</span>
+                        <div class="support-content">
+                            <h4>Parent Consultations</h4>
+                            <p>Regular parent-teacher meetings to discuss student progress and development</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- Teachers Section -->
         <section id="teachers" class="page">
-            <h2>Meet Our Teacher</h2>
+            <h2>Meet Our Expert Teacher</h2>
             <p class="section-description">
-                Our dedicated teacher is passionate about helping students succeed and has years of experience 
-                in Mathematics, Mathematics Literacy and Physics.
+                Our dedicated and passionate teacher brings years of experience, proven methodologies, and a track record 
+                of transforming students' academic performance in Mathematics, Mathematics Literacy, and Physics.
             </p>
             
             <div class="teachers">
-                <div class="teacher-card" style="cursor: default;">
-                    <h3>Mr. Mgaga</h3>
-                    <p class="subject">Mathematics, Mathematics Literacy & Physics Teacher</p>
-                    <p class="experience">Teaching Experience: 2019 - Present</p>
+                <div class="teacher-card">
+                    <div class="teacher-header">
+                        <h3>Mr. Mgaga</h3>
+                        <p class="subject">Mathematics, Mathematics Literacy & Physics Specialist</p>
+                        <p class="experience">Teaching Experience: 2019 - Present</p>
+                    </div>
                     
+                    <div class="teacher-qualifications">
+                        <h4>Professional Qualifications</h4>
+                        <ul>
+                            <li>Bachelor of Science in Mathematics & Physics</li>
+                            <li>5+ Years Teaching Experience</li>
+                        </ul>
+                    </div>
+
                     <!-- Achievement Messages -->
                     <div class="teacher-achievements">
                         <div class="achievement-item">
                             <span class="achievement-icon">🎓</span>
                             <div class="achievement-content">
                                 <strong>70+ Successful University Students</strong>
-                                <p>Former learners currently pursuing degrees at top universities including Wits, UJ, UP, and more</p>
+                                <p>Former learners currently pursuing degrees at top universities including Wits, UJ, UP, UCT, and Stellenbosch</p>
                             </div>
                         </div>
                         
@@ -261,7 +515,7 @@
                             <span class="achievement-icon">🏆</span>
                             <div class="achievement-content">
                                 <strong>40+ College Graduates</strong>
-                                <p>Students who successfully completed college programs and are now building their careers</p>
+                                <p>Students who successfully completed college programs in engineering, IT, business, and healthcare fields</p>
                             </div>
                         </div>
                         
@@ -269,18 +523,27 @@
                             <span class="achievement-icon">⭐</span>
                             <div class="achievement-content">
                                 <strong>Proven Track Record</strong>
-                                <p>Consistent improvement in student performance with 95% pass rate in final examinations</p>
+                                <p>Consistent improvement in student performance with 95% pass rate in final examinations across all subjects</p>
                             </div>
                         </div>
                     </div>
 
-                    <p class="teacher-description">
-                        Join the hundreds of successful students who have transformed their academic journey through our specialized tutoring. 
-                        With a proven methodology that focuses on understanding core concepts and developing problem-solving skills, 
-                        I help students not only pass but excel in their Mathematics and Physics examinations.
-                    </p>
+                    <div class="teaching-philosophy">
+                        <h4>Teaching Philosophy</h4>
+                        <p>
+                            "I believe every student has the potential to excel in mathematics and science. My approach 
+                            focuses on building confidence through understanding fundamental concepts, developing 
+                            problem-solving skills, and applying knowledge to real-world situations. I create a 
+                            supportive learning environment where students feel comfortable asking questions and 
+                            exploring different approaches to solving problems."
+                        </p>
+                    </div>
                     
                     <div class="success-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Overall Pass Rate</div>
+                        </div>
                         <div class="stat-item">
                             <div class="stat-number">70+</div>
                             <div class="stat-label">University Students</div>
@@ -290,64 +553,240 @@
                             <div class="stat-label">College Graduates</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">95%</div>
-                            <div class="stat-label">Pass Rate</div>
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+
+                    <div class="methodology">
+                        <h4>Teaching Methodology</h4>
+                        <div class="methodology-grid">
+                            <div class="method-item">
+                                <span class="method-icon">🔍</span>
+                                <div class="method-content">
+                                    <h5>Conceptual Understanding</h5>
+                                    <p>Focus on understanding core concepts rather than memorization</p>
+                                </div>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">💡</span>
+                                <div class="method-content">
+                                    <h5>Problem-Solving Skills</h5>
+                                    <p>Develop critical thinking and analytical problem-solving abilities</p>
+                                </div>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">🔄</span>
+                                <div class="method-content">
+                                    <h5>Interactive Learning</h5>
+                                    <p>Engaging lessons with practical examples and real-world applications</p>
+                                </div>
+                            </div>
+                            <div class="method-item">
+                                <span class="method-icon">📊</span>
+                                <div class="method-content">
+                                    <h5>Progress Monitoring</h5>
+                                    <p>Regular assessments and personalized feedback for continuous improvement</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="teacher-subjects">
-                        <h4>Subjects Offered:</h4>
-                        <ul>
-                            <li>Mathematics (Grades 10-12)</li>
-                            <li>Mathematics Literacy (Grades 10-12)</li>
-                            <li>Physics (Grades 10-12)</li>
-                        </ul>
+                        <h4>Subjects & Grade Levels</h4>
+                        <div class="subjects-detailed">
+                            <div class="subject-detail">
+                                <h5>Mathematics (Grades 10-12)</h5>
+                                <ul>
+                                    <li>Algebra, Functions & Graphs</li>
+                                    <li>Calculus & Differential Equations</li>
+                                    <li>Trigonometry & Geometry</li>
+                                    <li>Probability & Statistics</li>
+                                    <li>Financial Mathematics</li>
+                                </ul>
+                            </div>
+                            <div class="subject-detail">
+                                <h5>Mathematics Literacy (Grades 10-12)</h5>
+                                <ul>
+                                    <li>Basic Mathematical Skills</li>
+                                    <li>Financial Calculations</li>
+                                    <li>Measurement Conversions</li>
+                                    <li>Data Interpretation</li>
+                                    <li>Maps & Scale Drawings</li>
+                                </ul>
+                            </div>
+                            <div class="subject-detail">
+                                <h5>Physics (Grades 10-12)</h5>
+                                <ul>
+                                    <li>Mechanics & Motion</li>
+                                    <li>Electricity & Magnetism</li>
+                                    <li>Waves, Sound & Light</li>
+                                    <li>Thermodynamics</li>
+                                    <li>Modern Physics</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="cta-section">
                         <p class="cta-message">
-                            <strong>Ready to be our next success story?</strong> Apply now and start your journey to academic excellence!
+                            <strong>Ready to be our next success story?</strong> Join hundreds of students who have 
+                            transformed their academic journey and achieved their dreams through our specialized tutoring program.
                         </p>
-                        <button class="cta-button" onclick="showSection('apply')">
-                            Start Your Success Journey
-                        </button>
+                        <div class="cta-buttons">
+                            <button class="cta-button primary" onclick="showSection('apply')">
+                                Start Your Success Journey
+                            </button>
+                            <button class="cta-button secondary" onclick="showSection('contact')">
+                                Ask Questions First
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="page">
-            <h2>Contact Us</h2>
+            <h2>Get In Touch With Us</h2>
             <div class="contact-content">
                 <p class="contact-intro">
-                    Have questions or ready to enroll? We're here to help! Reach out to us through any of the following methods:
+                    Have questions about our programs, ready to enroll, or want to schedule a consultation? 
+                    We're here to help you achieve academic excellence. Reach out through any of the following methods:
                 </p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <strong>Call:</strong> 069 642 9712
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <strong>Location:</strong> 48 Hout Street, Jeppestown 2094, Johannesburg
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">⏰</span>
-                        <strong>Response Time:</strong> We typically respond within 24 hours
-                    </div>
-                    <div class="social-media">
-                        <h3>Follow Us on Social Media</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-link facebook">
-                                <span class="social-icon">📘</span>
-                                <span>Facebook</span>
-                            </a>
-                            <a href="#" class="social-link instagram">
-                                <span class="social-icon">📷</span>
-                                <span>Instagram</span>
-                            </a>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <div class="contact-detail">
+                                <strong>Call Us</strong>
+                                <p>069 642 9712</p>
+                                <small>Available for calls and WhatsApp</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">📍</span>
+                            <div class="contact-detail">
+                                <strong>Visit Us</strong>
+                                <p>48 Hout Street, Jeppestown 2094, Johannesburg</p>
+                                <small>Central location with easy access</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">⏰</span>
+                            <div class="contact-detail">
+                                <strong>Operating Hours</strong>
+                                <p>Monday - Friday: 2:00 PM - 6:00 PM</p>
+                                <p>Saturday: 9:00 AM - 1:00 PM</p>
+                                <small>After-school and weekend sessions available</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <span class="contact-icon">💬</span>
+                            <div class="contact-detail">
+                                <strong>Response Time</strong>
+                                <p>We typically respond within 24 hours</p>
+                                <small>Quick responses to all inquiries</small>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="contact-methods">
+                        <h3>Quick Contact Methods</h3>
+                        <div class="method-cards">
+                            <div class="method-card" onclick="window.location.href='tel:0696429712'">
+                                <span class="method-icon">📞</span>
+                                <h4>Call Now</h4>
+                                <p>Speak directly with Mr. Mgaga</p>
+                                <button class="method-btn">Call 069 642 9712</button>
+                            </div>
+                            
+                            <div class="method-card" onclick="openWhatsApp()">
+                                <span class="method-icon">📱</span>
+                                <h4>WhatsApp</h4>
+                                <p>Quick chat and information</p>
+                                <button class="method-btn">Message on WhatsApp</button>
+                            </div>
+                            
+                            <div class="method-card" onclick="openEmail()">
+                                <span class="method-icon">📧</span>
+                                <h4>Email</h4>
+                                <p>Detailed inquiries and documents</p>
+                                <button class="method-btn">Send Email</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visit-info">
+                    <h3>Planning to Visit?</h3>
+                    <div class="visit-details">
+                        <div class="visit-item">
+                            <h4>📍 Location Details</h4>
+                            <p>Our facility is located at 48 Hout Street in Jeppestown, Johannesburg. We are easily 
+                               accessible by public transport and have secure parking available for students and parents.</p>
+                        </div>
+                        
+                        <div class="visit-item">
+                            <h4>🚍 Getting Here</h4>
+                            <ul>
+                                <li><strong>By Taxi:</strong> Multiple taxi routes pass through Jeppestown</li>
+                                <li><strong>By Bus:</strong> Several bus stops within walking distance</li>
+                                <li><strong>By Car:</strong> Secure parking available on premises</li>
+                                <li><strong>Walking:</strong> Safe pedestrian access from surrounding areas</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="visit-item">
+                            <h4>🕒 First Visit</h4>
+                            <p>For your first visit, we recommend scheduling an appointment so we can dedicate 
+                               proper time to understand your learning needs and provide a comprehensive facility tour.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-media">
+                    <h3>Connect With Us</h3>
+                    <p>Follow us on social media for study tips, success stories, and updates:</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-link facebook" onclick="showNotification('Facebook page coming soon!', 'info')">
+                            <span class="social-icon">📘</span>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="#" class="social-link instagram" onclick="showNotification('Instagram page coming soon!', 'info')">
+                            <span class="social-icon">📷</span>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="#" class="social-link whatsapp" onclick="openWhatsApp()">
+                            <span class="social-icon">💬</span>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="faq-preview">
+                    <h3>Frequently Asked Questions</h3>
+                    <div class="faq-grid">
+                        <div class="faq-item">
+                            <h4>What are your fees?</h4>
+                            <p>Our fees vary based on class type and frequency. Contact us for detailed pricing information.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Do you offer trial classes?</h4>
+                            <p>Yes, we offer one trial class so you can experience our teaching methodology.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>What materials do I need?</h4>
+                            <p>Just basic stationery.You come with your textbooks and learning materials.</p>
+                        </div>
+                    </div>
+                    <button class="cta-button secondary" onclick="showSection('apply')">See All FAQs & Apply</button>
                 </div>
             </div>
         </section>
@@ -356,20 +795,43 @@
     <!-- Modal for Phone Call -->
     <div id="phoneModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
+            <span class="close" id="close-modal">&times;</span>
             <h3>📞 Call Us Now</h3>
-            <p>Click the button below to call us directly to discuss your application:</p>
+            <p>Ready to discuss your learning needs? Click the button below to call us directly:</p>
             <a href="tel:+27696429712" class="contact-option-btn modal-call-btn">
                 <span class="icon">📞</span>
                 <span>Call 069 642 9712</span>
             </a>
-            <p class="modal-note">We're available to discuss your learning needs and schedule your classes.</p>
+            <p class="modal-note">We're available to discuss your academic goals, schedule classes, and answer any questions you may have about our programs.</p>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Extra Classes(PV) - Mathematics, Mathematics Literacy & Physics. All rights reserved.</p>
-        <p>48 Hout Street, Jeppestown 2094, Johannesburg</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Extra Classes</h4>
+                <p>Excellence in Mathematics, Mathematics Literacy & Physics</p>
+                <p>Transforming academic journeys since 2019</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>📞 069 642 9712</p>
+                <p>📍 48 Hout Street, Jeppestown 2094, Johannesburg</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home" onclick="showSection('home')">Home</a>
+                <a href="#apply" onclick="showSection('apply')">Apply Now</a>
+                <a href="#contact" onclick="showSection('contact')">Contact</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Extra Classes(PV) - Mathematics, Mathematics Literacy & Physics. All rights reserved.</p>
+            <p>48 Hout Street, Jeppestown 2094, Johannesburg</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

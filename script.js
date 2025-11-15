@@ -1,3 +1,126 @@
+// DOM Ready function
+document.addEventListener('DOMContentLoaded', function() {
+    initializeApp();
+});
+
+function initializeApp() {
+    // Initialize mobile menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('nav a[data-section]');
+    const closeModalBtn = document.getElementById('close-modal');
+    const phoneModal = document.getElementById('phoneModal');
+
+    // Mobile menu functionality
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileMenuBtn.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        toggleMobileMenu();
+    });
+
+    // Navigation link handling
+    navLinks.forEach(link => {
+        link.addEventListener('click', handleNavClick);
+        link.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            handleNavClick.call(this, e);
+        });
+    });
+
+    // Modal functionality
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeModal();
+        });
+    }
+
+    // Close modal when clicking outside
+    if (phoneModal) {
+        phoneModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        phoneModal.addEventListener('touchend', function(e) {
+            if (e.target === this) {
+                e.preventDefault();
+                closeModal();
+            }
+        });
+    }
+
+    // Close mobile menu when clicking on links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+        link.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            closeMobileMenu();
+        });
+    });
+
+    // Set home navigation as active by default
+    setActiveNav('home');
+    
+    // Initialize any animations or additional features
+    initializeAnimations();
+    
+    console.log('Extra Classes website initialized successfully!');
+}
+
+function initializeAnimations() {
+    // Add intersection observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for animation
+    document.querySelectorAll('.feature-card, .subject-card, .media-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+// Mobile menu functionality
+function toggleMobileMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    const body = document.body;
+    
+    navMenu.classList.toggle('show');
+    body.classList.toggle('menu-open');
+}
+
+function closeMobileMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    const body = document.body;
+    
+    navMenu.classList.remove('show');
+    body.classList.remove('menu-open');
+}
+
+// Navigation handling
+function handleNavClick(event) {
+    event.preventDefault();
+    const sectionId = this.getAttribute('data-section');
+    showSection(sectionId);
+}
+
 // Page navigation functionality
 function showSection(sectionId) {
     // Hide all sections
@@ -6,40 +129,42 @@ function showSection(sectionId) {
     });
     
     // Show the selected section
-    document.getElementById(sectionId).classList.add('active');
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+        
+        // Scroll to top of the section with offset for fixed header
+        setTimeout(() => {
+            const offset = 80;
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }, 100);
+    }
     
-    // Close mobile menu if open
-    document.getElementById('nav-menu').classList.remove('show');
+    // Close mobile menu
+    closeMobileMenu();
     
+    // Update active navigation
+    setActiveNav(sectionId);
+}
+
+function setActiveNav(sectionId) {
     // Remove active class from all nav items
     document.querySelectorAll('nav li').forEach(item => {
         item.classList.remove('active');
     });
     
     // Add active class to clicked nav item
-    const activeNavItem = document.querySelector(`nav a[onclick="showSection('${sectionId}')"]`).parentElement;
-    activeNavItem.classList.add('active');
-    
-    // Scroll to top of page
-    window.scrollTo(0, 0);
-}
-
-// Mobile menu functionality
-function toggleMobileMenu() {
-    const navMenu = document.getElementById('nav-menu');
-    navMenu.classList.toggle('show');
-}
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
-    const nav = document.querySelector('nav');
-    const navMenu = document.getElementById('nav-menu');
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    
-    if (!nav.contains(event.target) && navMenu.classList.contains('show')) {
-        navMenu.classList.remove('show');
+    const activeNavItem = document.querySelector(`nav a[data-section="${sectionId}"]`);
+    if (activeNavItem && activeNavItem.parentElement) {
+        activeNavItem.parentElement.classList.add('active');
     }
-});
+}
 
 // Form validation
 function validateForm() {
@@ -76,6 +201,14 @@ function validateForm() {
         return false;
     }
     
+    // Basic phone validation
+    const phoneRegex = /^[0-9+\-\s()]{10,}$/;
+    if (!phoneRegex.test(phone)) {
+        showNotification('Please enter a valid phone number', 'error');
+        document.getElementById('phone').focus();
+        return false;
+    }
+    
     if (!grade) {
         showNotification('Please select your grade level', 'error');
         document.getElementById('grade').focus();
@@ -97,13 +230,7 @@ function validateForm() {
     return true;
 }
 
-// Function to clear form inputs
-function clearForm() {
-    document.getElementById('studentForm').reset();
-    showNotification('Form has been cleared successfully', 'success');
-}
-
-// WhatsApp submission - UPDATED WITH MR. MGAGA
+// WhatsApp submission - UPDATED NUMBER
 function submitViaWhatsApp() {
     if (!validateForm()) return;
 
@@ -117,25 +244,23 @@ function submitViaWhatsApp() {
     
     const whatsappMessage = `Dear Mr. Mgaga,%0A%0AI would like to apply for extra classes with the following details:%0A%0A*STUDENT APPLICATION DETAILS*%0A%0A*Full Name:* ${name}%0A*Email Address:* ${email}%0A*Phone Number:* ${phone}%0A*Grade Level:* ${grade}%0A*Subject Required:* ${subject}%0A*Preferred Class Type:* ${classType}%0A*Additional Information:* ${message || 'No additional information provided'}%0A%0AThank you for considering my application. I look forward to your response.%0A%0AKind regards,%0A${name}`;
     
-    // Updated WhatsApp number
+    // Updated WhatsApp number to 0606503136
     const whatsappURL = `https://wa.me/27606503136?text=${whatsappMessage}`;
     
-    showNotification('Opening WhatsApp... Your formal application will be sent when you press the send button.', 'success');
+    showNotification('Opening WhatsApp... Your application will be sent when you press send.', 'success');
     
-    // Clear the form
     clearForm();
     
-    // Open in new tab on desktop, same tab on mobile
     setTimeout(() => {
         if (window.innerWidth <= 768) {
             window.location.href = whatsappURL;
         } else {
             window.open(whatsappURL, '_blank');
         }
-    }, 2000);
+    }, 1500);
 }
 
-// Email submission - UPDATED WITH MR. MGAGA
+// Email submission
 function submitViaEmail() {
     if (!validateForm()) return;
 
@@ -150,30 +275,43 @@ function submitViaEmail() {
     const subjectLine = `Student Application - ${name} - ${subject} - ${grade}`;
     const body = `Dear Mr. Mgaga,%0D%0A%0D%0AI am writing to apply for extra classes and would appreciate your consideration.%0D%0A%0D%0APlease find my application details below:%0D%0A%0D%0A*STUDENT APPLICATION DETAILS*%0D%0A%0D%0A*Full Name:* ${name}%0D%0A*Email Address:* ${email}%0D%0A*Phone Number:* ${phone}%0D%0A*Grade Level:* ${grade}%0D%0A*Subject Required:* ${subject}%0D%0A*Preferred Class Type:* ${classType}%0D%0A*Additional Information:* ${additionalMessage || 'No additional information provided'}%0D%0A%0D%0AThank you for considering my application. I am available to discuss my learning needs and look forward to your response.%0D%0A%0D%0AYours sincerely,%0D%0A${name}`;
     
-    showNotification('Opening your email app... Your formal application is ready to send.', 'success');
+    showNotification('Opening your email app... Your application is ready to send.', 'success');
     
-    // Clear the form
     clearForm();
     
     setTimeout(() => {
-        // Updated email address
         const mailtoURL = `mailto:mgagak722@gmail.com?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoURL;
-    }, 2000);
+    }, 1500);
 }
 
-// Phone submission - UPDATED NUMBER
+// Phone submission
 function submitViaPhone() {
     if (!validateForm()) return;
     
-    showNotification('Opening phone dialer... Please call us to discuss your application formally.', 'success');
+    showNotification('Opening phone dialer... Please call us to discuss your application.', 'success');
     
-    // Clear the form
     clearForm();
     
     setTimeout(() => {
         document.getElementById('phoneModal').style.display = 'block';
-    }, 1500);
+    }, 1000);
+}
+
+// Quick contact functions - UPDATED WHATSAPP NUMBER
+function openWhatsApp() {
+    // Updated WhatsApp number to 0606503136
+    const whatsappURL = `https://wa.me/27606503136`;
+    if (window.innerWidth <= 768) {
+        window.location.href = whatsappURL;
+    } else {
+        window.open(whatsappURL, '_blank');
+    }
+}
+
+function openEmail() {
+    const mailtoURL = `mailto:mgagak722@gmail.com?subject=Inquiry about Extra Classes`;
+    window.location.href = mailtoURL;
 }
 
 // Modal functions
@@ -181,12 +319,10 @@ function closeModal() {
     document.getElementById('phoneModal').style.display = 'none';
 }
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('phoneModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
+// Function to clear form inputs
+function clearForm() {
+    document.getElementById('studentForm').reset();
+    showNotification('Form has been cleared successfully', 'success');
 }
 
 // Notification system
@@ -218,40 +354,85 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Touch-friendly improvements
-document.addEventListener('DOMContentLoaded', function() {
-    // Add touch feedback to buttons
-    const buttons = document.querySelectorAll('button, .teacher-card');
-    buttons.forEach(button => {
-        button.addEventListener('touchstart', function() {
-            this.style.transform = 'scale(0.98)';
-        });
-        
-        button.addEventListener('touchend', function() {
-            this.style.transform = '';
-        });
-    });
-    
-    // Set home navigation as active by default
-    document.querySelector('nav li:first-child').classList.add('active');
-    
-    // Prevent zoom on double-tap for buttons
-    document.addEventListener('touchend', function(e) {
-        if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-    
-    console.log('Extra Classes website loaded successfully!');
-});
-
 // Handle orientation changes
 window.addEventListener('orientationchange', function() {
-    // Close modals on orientation change
-    document.getElementById('phoneModal').style.display = 'none';
+    closeModal();
+    closeMobileMenu();
     
-    // Recalculate any layout if needed
     setTimeout(() => {
         window.scrollTo(0, 0);
     }, 100);
+});
+
+// Close mobile menu when clicking outside (improved)
+document.addEventListener('click', function(event) {
+    const nav = document.querySelector('nav');
+    const navMenu = document.getElementById('nav-menu');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    
+    if (!nav.contains(event.target) && navMenu.classList.contains('show')) {
+        closeMobileMenu();
+    }
+});
+
+// Prevent zoom on double-tap (improved)
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+// Add smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Add loading state to buttons
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', function() {
+        if (this.classList.contains('contact-option-btn') || this.classList.contains('cta-button')) {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        }
+    });
+});
+
+// Enhanced form experience
+document.querySelectorAll('input, select, textarea').forEach(field => {
+    field.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+    });
+    
+    field.addEventListener('blur', function() {
+        if (!this.value) {
+            this.parentElement.classList.remove('focused');
+        }
+    });
+});
+
+// Initialize form fields on load
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input, select, textarea').forEach(field => {
+        if (field.value) {
+            field.parentElement.classList.add('focused');
+        }
+    });
 });
