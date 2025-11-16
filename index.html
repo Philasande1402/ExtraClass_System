@@ -232,7 +232,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="069 642 9712" pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                                <input type="tel" id="phone" name="phone" required placeholder="069 642 9712" oninput="validatePhoneInput(this)">
                             </div>
                             <div class="form-group">
                                 <label for="grade">Grade Level *</label>
@@ -334,11 +334,9 @@
             </div>
 
             <div class="classroom-media-grid">
-                <!-- Image Card 1 - Changed to school_inside.jpeg -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="school_inside.jpeg" 
-                             alt="School interior view showing modern facilities" class="media-element">
+                        <img src="school_inside.jpeg" alt="School interior view showing modern facilities" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Modern School Facilities</h3>
@@ -346,11 +344,9 @@
                     </div>
                 </div>
                 
-                <!-- Image Card 2 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" 
-                             alt="Mathematics learning session" class="media-element">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Mathematics learning session" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Mathematics Tutorial</h3>
@@ -358,11 +354,9 @@
                     </div>
                 </div>
                 
-                <!-- Image Card 3 - Changed to classroom.jpeg -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="classroom.jpeg" 
-                             alt="Well-equipped classroom environment" class="media-element">
+                        <img src="classroom.jpeg" alt="Well-equipped classroom environment" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Interactive Classroom</h3>
@@ -370,11 +364,9 @@
                     </div>
                 </div>
                 
-                <!-- Image Card 4 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://i.etsystatic.com/22411947/r/il/cad418/2999333476/il_570xN.2999333476_iy4p.jpg" 
-                             alt="Physics experiment demonstration" class="media-element">
+                        <img src="https://i.etsystatic.com/22411947/r/il/cad418/2999333476/il_570xN.2999333476_iy4p.jpg" alt="Physics experiment demonstration" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Physics Demonstration</h3>
@@ -382,11 +374,9 @@
                     </div>
                 </div>
 
-                <!-- Image Card 5 - Changed to reception.jpeg -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="reception.jpeg" 
-                             alt="Welcoming reception area" class="media-element">
+                        <img src="reception.jpeg" alt="Welcoming reception area" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Welcoming Reception</h3>
@@ -394,11 +384,9 @@
                     </div>
                 </div>
 
-                <!-- Image Card 6 -->
                 <div class="media-card">
                     <div class="media-container">
-                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1122&q=80" 
-                             alt="Group problem solving session" class="media-element">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1122&q=80" alt="Group problem solving session" class="media-element">
                     </div>
                     <div class="media-caption">
                         <h3>Group Problem Solving</h3>
@@ -488,7 +476,7 @@
             
             <div class="teachers">
                 <div class="teacher-card">
-                    <!-- Added Teacher Image -->
+                    <!-- Teacher Image Added Here -->
                     <div class="teacher-image-container">
                         <img src="mr_mgaga.jpeg" alt="Mr. Mgaga - Mathematics, Mathematics Literacy & Physics Specialist" class="teacher-profile-img">
                     </div>
@@ -507,7 +495,6 @@
                         </ul>
                     </div>
 
-                    <!-- Achievement Messages -->
                     <div class="teacher-achievements">
                         <div class="achievement-item">
                             <span class="achievement-icon">🎓</span>
@@ -813,34 +800,34 @@
     </div>
 
     <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Extra Classes</h4>
-                    <p>Excellence in Mathematics, Mathematics Literacy & Physics</p>
-                    <p>Transforming academic journeys since 2019</p>
-                    <div class="application-counter">
-                        <strong><span id="applicationCounter">0</span></strong>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>📞 069 642 9712</p>
-                    <p>📍 48 Hout Street, Jeppestown 2094, Johannesburg</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="#home" onclick="showSection('home')">Home</a>
-                    <a href="#apply" onclick="showSection('apply')">Apply Now</a>
-                    <a href="#contact" onclick="showSection('contact')">Contact</a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Extra Classes</h4>
+                <p>Excellence in Mathematics, Mathematics Literacy & Physics</p>
+                <p>Transforming academic journeys since 2019</p>
+                <div class="application-counter">
+                    <strong>Applications: <span id="applicationCounter">0</span></strong>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 Extra Classes(PV) - Mathematics, Mathematics Literacy & Physics. All rights reserved.</p>
-                <p>48 Hout Street, Jeppestown 2094, Johannesburg</p>
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p>📞 069 642 9712</p>
+                <p>📍 48 Hout Street, Jeppestown 2094, Johannesburg</p>
             </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home" onclick="showSection('home')">Home</a>
+                <a href="#apply" onclick="showSection('apply')">Apply Now</a>
+                <a href="#contact" onclick="showSection('contact')">Contact</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Extra Classes(PV) - Mathematics, Mathematics Literacy & Physics. All rights reserved.</p>
+            <p>48 Hout Street, Jeppestown 2094, Johannesburg</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
