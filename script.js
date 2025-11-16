@@ -1,24 +1,22 @@
 // Message counter system - PERSISTENT
 let messageCount = 0;
 
-// Initialize counter from localStorage - IMPROVED
+// Initialize counter from localStorage
 function initializeCounter() {
     try {
         const savedCount = localStorage.getItem('applicationCount');
-        // Ensure we have a valid number, default to 0 if not
         messageCount = savedCount ? parseInt(savedCount) : 0;
         if (isNaN(messageCount)) {
             messageCount = 0;
         }
         updateCounterDisplay();
-        console.log('Counter initialized:', messageCount);
     } catch (e) {
         messageCount = 0;
         console.log('Counter: Using fallback');
     }
 }
 
-// Update counter display - IMPROVED
+// Update counter display
 function updateCounterDisplay() {
     const counterElement = document.getElementById('applicationCounter');
     if (counterElement) {
@@ -26,12 +24,11 @@ function updateCounterDisplay() {
     }
 }
 
-// Increment counter - IMPROVED PERSISTENCE
+// Increment counter
 function incrementCounter() {
     messageCount++;
     try {
         localStorage.setItem('applicationCount', messageCount.toString());
-        console.log('Counter updated:', messageCount);
     } catch (e) {
         console.log('Counter: Could not save to localStorage');
     }
@@ -41,7 +38,7 @@ function incrementCounter() {
 // DOM Ready function
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
-    initializeCounter(); // DOUBLE INITIALIZATION FOR SAFETY
+    initializeCounter();
 });
 
 function initializeApp() {
@@ -53,28 +50,18 @@ function initializeApp() {
     const phoneModal = document.getElementById('phoneModal');
 
     // Mobile menu functionality
-    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-    mobileMenuBtn.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        toggleMobileMenu();
-    });
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
 
     // Navigation link handling
     navLinks.forEach(link => {
         link.addEventListener('click', handleNavClick);
-        link.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            handleNavClick.call(this, e);
-        });
     });
 
     // Modal functionality
     if (closeModalBtn) {
         closeModalBtn.addEventListener('click', closeModal);
-        closeModalBtn.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            closeModal();
-        });
     }
 
     // Close modal when clicking outside
@@ -84,33 +71,12 @@ function initializeApp() {
                 closeModal();
             }
         });
-        
-        phoneModal.addEventListener('touchend', function(e) {
-            if (e.target === this) {
-                e.preventDefault();
-                closeModal();
-            }
-        });
     }
-
-    // Close mobile menu when clicking on links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            closeMobileMenu();
-        });
-        link.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            closeMobileMenu();
-        });
-    });
 
     // Set home navigation as active by default
     setActiveNav('home');
     
-    // Initialize counter here too for redundancy
-    initializeCounter();
-    
-    // Initialize any animations or additional features
+    // Initialize animations
     initializeAnimations();
     
     console.log('Extra Classes website initialized successfully!');
@@ -141,24 +107,18 @@ function initializeAnimations() {
     });
 }
 
-// Phone input validation to allow only digits
-function validatePhoneInput(input) {
-    // Remove any non-digit characters
-    input.value = input.value.replace(/\D/g, '');
-    
-    // Limit to 10 digits
-    if (input.value.length > 10) {
-        input.value = input.value.slice(0, 10);
-    }
-}
-
 // Mobile menu functionality
 function toggleMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
     const body = document.body;
     
-    navMenu.classList.toggle('show');
-    body.classList.toggle('menu-open');
+    if (navMenu.classList.contains('show')) {
+        navMenu.classList.remove('show');
+        body.classList.remove('menu-open');
+    } else {
+        navMenu.classList.add('show');
+        body.classList.add('menu-open');
+    }
 }
 
 function closeMobileMenu() {
@@ -256,20 +216,11 @@ function validateForm() {
         return false;
     }
     
-    // Strict phone validation: exactly 10 digits only
+    // Phone validation: exactly 10 digits
     const phoneDigits = phone.replace(/\D/g, '');
     if (phoneDigits.length !== 10) {
-        showNotification('Please enter exactly 10 digits for phone number (numbers only)', 'error');
+        showNotification('Please enter exactly 10 digits for phone number', 'error');
         document.getElementById('phone').focus();
-        document.getElementById('phone').select();
-        return false;
-    }
-    
-    // Ensure phone contains only digits
-    if (!/^\d+$/.test(phoneDigits)) {
-        showNotification('Phone number must contain only numbers (0-9)', 'error');
-        document.getElementById('phone').focus();
-        document.getElementById('phone').select();
         return false;
     }
     
@@ -294,7 +245,7 @@ function validateForm() {
     return true;
 }
 
-// WhatsApp submission - UPDATED NUMBER to 069 642 9712
+// WhatsApp submission
 function submitViaWhatsApp() {
     if (!validateForm()) return;
     incrementCounter();
@@ -307,10 +258,8 @@ function submitViaWhatsApp() {
     const classType = document.getElementById('classType').value;
     const message = document.getElementById('message').value.trim();
     
-    // Better formatted WhatsApp message
     const whatsappMessage = `Dear Mr. Mgaga,%0A%0AI would like to apply for extra classes and would appreciate your consideration.%0A%0A*STUDENT APPLICATION DETAILS*%0A%0A*Full Name:* ${name}%0A*Email Address:* ${email}%0A*Phone Number:* ${phone}%0A*Grade Level:* ${grade}%0A*Subject Required:* ${subject}%0A*Preferred Class Type:* ${classType}%0A*Additional Information:* ${message || 'No additional information provided'}%0A%0AThank you for considering my application. I look forward to your response.%0A%0AKind regards,%0A${name}`;
     
-    // Updated WhatsApp number to 069 642 9712
     const whatsappURL = `https://wa.me/27696429712?text=${whatsappMessage}`;
     
     showNotification('Opening WhatsApp... Your application will be sent when you press send.', 'success');
@@ -341,7 +290,6 @@ function submitViaEmail() {
     
     const subjectLine = `Student Application - ${name} - ${subject} - ${grade}`;
     
-    // Properly formatted email body with line breaks and structure
     const body = `Dear Mr. Mgaga,
 
 I am writing to apply for extra classes and would appreciate your consideration.
@@ -388,9 +336,8 @@ function submitViaPhone() {
     }, 1000);
 }
 
-// Quick contact functions - UPDATED WHATSAPP NUMBER to 069 642 9712
+// Quick contact functions
 function openWhatsApp() {
-    // Updated WhatsApp number to 069 642 9712
     const whatsappURL = `https://wa.me/27696429712`;
     if (window.innerWidth <= 768) {
         window.location.href = whatsappURL;
@@ -444,17 +391,7 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Handle orientation changes
-window.addEventListener('orientationchange', function() {
-    closeModal();
-    closeMobileMenu();
-    
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 100);
-});
-
-// Close mobile menu when clicking outside (improved)
+// Close mobile menu when clicking outside
 document.addEventListener('click', function(event) {
     const nav = document.querySelector('nav');
     const navMenu = document.getElementById('nav-menu');
@@ -463,66 +400,4 @@ document.addEventListener('click', function(event) {
     if (!nav.contains(event.target) && navMenu.classList.contains('show')) {
         closeMobileMenu();
     }
-});
-
-// Prevent zoom on double-tap (improved)
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function(event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-    }
-    lastTouchEnd = now;
-}, false);
-
-// Add smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offset = 80;
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Add loading state to buttons
-document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('click', function() {
-        if (this.classList.contains('contact-option-btn') || this.classList.contains('cta-button')) {
-            this.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 150);
-        }
-    });
-});
-
-// Enhanced form experience
-document.querySelectorAll('input, select, textarea').forEach(field => {
-    field.addEventListener('focus', function() {
-        this.parentElement.classList.add('focused');
-    });
-    
-    field.addEventListener('blur', function() {
-        if (!this.value) {
-            this.parentElement.classList.remove('focused');
-        }
-    });
-});
-
-// Initialize form fields on load
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('input, select, textarea').forEach(field => {
-        if (field.value) {
-            field.parentElement.classList.add('focused');
-        }
-    });
 });

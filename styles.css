@@ -642,6 +642,25 @@ input:focus, select:focus, textarea:focus {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
 }
 
+.teacher-image {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.teacher-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.teacher-card:hover .teacher-image img {
+    transform: scale(1.03);
+}
+
 .teacher-card h3 {
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     margin-bottom: 0.5rem;
@@ -1798,4 +1817,41 @@ footer p {
     background: rgba(255, 255, 255, 0.1);
     padding: 0.3rem 0.6rem;
     border-radius: 3px;
+}
+
+/* Add to existing CSS */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Teacher Image Styles */
+.teacher-image-container {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.teacher-profile-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.teacher-card:hover .teacher-profile-img {
+    transform: scale(1.03);
+}
+
+/* Form focused state styles */
+.form-group.focused label {
+    color: var(--primary-color);
+}
+
+.form-group.focused input,
+.form-group.focused select,
+.form-group.focused textarea {
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.95);
 }
