@@ -294,7 +294,7 @@ function validateForm() {
     return true;
 }
 
-// WhatsApp submission - UPDATED NUMBER
+// WhatsApp submission - UPDATED NUMBER to 069 642 9712
 function submitViaWhatsApp() {
     if (!validateForm()) return;
     incrementCounter();
@@ -310,8 +310,8 @@ function submitViaWhatsApp() {
     // Better formatted WhatsApp message
     const whatsappMessage = `Dear Mr. Mgaga,%0A%0AI would like to apply for extra classes and would appreciate your consideration.%0A%0A*STUDENT APPLICATION DETAILS*%0A%0A*Full Name:* ${name}%0A*Email Address:* ${email}%0A*Phone Number:* ${phone}%0A*Grade Level:* ${grade}%0A*Subject Required:* ${subject}%0A*Preferred Class Type:* ${classType}%0A*Additional Information:* ${message || 'No additional information provided'}%0A%0AThank you for considering my application. I look forward to your response.%0A%0AKind regards,%0A${name}`;
     
-    // Updated WhatsApp number to 0606503136
-    const whatsappURL = `https://wa.me/27606503136?text=${whatsappMessage}`;
+    // Updated WhatsApp number to 069 642 9712
+    const whatsappURL = `https://wa.me/27696429712?text=${whatsappMessage}`;
     
     showNotification('Opening WhatsApp... Your application will be sent when you press send.', 'success');
     
@@ -388,10 +388,10 @@ function submitViaPhone() {
     }, 1000);
 }
 
-// Quick contact functions - UPDATED WHATSAPP NUMBER
+// Quick contact functions - UPDATED WHATSAPP NUMBER to 069 642 9712
 function openWhatsApp() {
-    // Updated WhatsApp number to 0606503136
-    const whatsappURL = `https://wa.me/27606503136`;
+    // Updated WhatsApp number to 069 642 9712
+    const whatsappURL = `https://wa.me/27696429712`;
     if (window.innerWidth <= 768) {
         window.location.href = whatsappURL;
     } else {
