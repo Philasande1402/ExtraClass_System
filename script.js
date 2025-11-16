@@ -1,4 +1,4 @@
-// Message counter system - PERSISTENT
+// Message counter system
 let messageCount = 0;
 
 // Initialize counter from localStorage
@@ -73,11 +73,21 @@ function initializeApp() {
         });
     }
 
+    // Close mobile menu when clicking on links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    });
+
     // Set home navigation as active by default
     setActiveNav('home');
     
     // Initialize animations
     initializeAnimations();
+    
+    // Initialize form focus states
+    initializeFormFocus();
     
     console.log('Extra Classes website initialized successfully!');
 }
@@ -107,18 +117,44 @@ function initializeAnimations() {
     });
 }
 
+function initializeFormFocus() {
+    // Enhanced form experience
+    document.querySelectorAll('input, select, textarea').forEach(field => {
+        field.addEventListener('focus', function() {
+            this.parentElement.classList.add('focused');
+        });
+        
+        field.addEventListener('blur', function() {
+            if (!this.value) {
+                this.parentElement.classList.remove('focused');
+            }
+        });
+        
+        // Initialize focused state for pre-filled fields
+        if (field.value) {
+            field.parentElement.classList.add('focused');
+        }
+    });
+}
+
+// Phone input validation
+function validatePhoneInput(input) {
+    // Remove any non-digit characters
+    input.value = input.value.replace(/\D/g, '');
+    
+    // Limit to 10 digits
+    if (input.value.length > 10) {
+        input.value = input.value.slice(0, 10);
+    }
+}
+
 // Mobile menu functionality
 function toggleMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
     const body = document.body;
     
-    if (navMenu.classList.contains('show')) {
-        navMenu.classList.remove('show');
-        body.classList.remove('menu-open');
-    } else {
-        navMenu.classList.add('show');
-        body.classList.add('menu-open');
-    }
+    navMenu.classList.toggle('show');
+    body.classList.toggle('menu-open');
 }
 
 function closeMobileMenu() {
@@ -216,7 +252,7 @@ function validateForm() {
         return false;
     }
     
-    // Phone validation: exactly 10 digits
+    // Phone validation
     const phoneDigits = phone.replace(/\D/g, '');
     if (phoneDigits.length !== 10) {
         showNotification('Please enter exactly 10 digits for phone number', 'error');
@@ -358,8 +394,14 @@ function closeModal() {
 
 // Function to clear form inputs
 function clearForm() {
-    document.getElementById('studentForm').reset();
-    showNotification('Form has been cleared successfully', 'success');
+    const form = document.getElementById('studentForm');
+    if (form) {
+        form.reset();
+        // Clear focused states
+        document.querySelectorAll('.form-group').forEach(group => {
+            group.classList.remove('focused');
+        });
+    }
 }
 
 // Notification system
@@ -400,4 +442,31 @@ document.addEventListener('click', function(event) {
     if (!nav.contains(event.target) && navMenu.classList.contains('show')) {
         closeMobileMenu();
     }
+});
+
+// Add loading state to buttons
+document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('click', function() {
+        if (this.classList.contains('contact-option-btn') || this.classList.contains('cta-button')) {
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        }
+    });
+});
+
+// Debug function to check if everything is working
+window.addEventListener('load', function() {
+    console.log('Page loaded - checking critical elements:');
+    
+    const criticalElements = [
+        'mobile-menu-btn', 'nav-menu', 'studentForm', 
+        'applicationCounter', 'phoneModal'
+    ];
+    
+    criticalElements.forEach(id => {
+        const element = document.getElementById(id);
+        console.log(`${id}:`, element ? '✓ Found' : '✗ Missing');
+    });
 });
